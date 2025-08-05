@@ -1,6 +1,7 @@
-Here's a README.md for the Xbox360.cc Casino project, formatted with tables for a clean, professional look.
-
 # 🎰 Xbox360.cc Casino
+
+
+# 🎰 Bored Casino (Formerly xbox360.cc)
 
 A modern, full-featured online casino application built with Next.js, featuring multiple games, user management, and a comprehensive admin panel.
 
@@ -48,3 +49,4 @@ This project offers a wide array of features for both players and administrators
 | **Security Logs** | Monitor admin actions and security events. |
 | **Database Management** | Built-in migration and maintenance tools. |
 | **Real-time Statistics** | A live dashboard for monitoring site activity. |
+
