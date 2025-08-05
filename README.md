@@ -1,7 +1,6 @@
-
-
-<img width="298" height="298" alt="188743753" src="https://github.com/user-attachments/assets/4e920833-d794-4a2a-b599-d5e3d2336983" />
-
+<hr>
+<div align="center"><img width="298" height="298" alt="188743753" src="https://github.com/user-attachments/assets/4e920833-d794-4a2a-b599-d5e3d2336983" /></div>
+<hr>
 
 <h1 style="text-align:center;"> THIS REPO IS STILL A WORK IN PROGRESS IT IS <b style="text-size:large;">NOT FINISHED</b></h1>
 <h3 style="text-align:center;"> Bored Casino (Formerly xbox360.cc) </h3>
