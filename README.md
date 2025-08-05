@@ -1,6 +1,3 @@
-# 🎰 Xbox360.cc Casino
-
-
 # 🎰 Bored Casino (Formerly xbox360.cc)
 
 A modern, full-featured online casino application built with Next.js, featuring multiple games, user management, and a comprehensive admin panel.
