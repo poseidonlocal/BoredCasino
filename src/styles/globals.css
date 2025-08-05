@@ -1,0 +1,879 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Howl.gg inspired fonts for modern gaming */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+/* Modern Gaming Casino Theme - Howl.gg Inspired */
+@layer base {
+  * {
+    @apply border-gray-700/50;
+  }
+  
+  body {
+    @apply text-white antialiased;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%),
+      linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 100%);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    background-attachment: fixed;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar with theme support */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(15, 15, 35, 0.5);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--theme-primary, #7c3aed), var(--theme-secondary, #a855f7));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--theme-secondary, #8b5cf6), var(--theme-accent, #c084fc));
+  }
+  
+  /* Custom scrollbar class */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--theme-primary, #7c3aed);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--theme-secondary, #a855f7);
+  }
+}
+
+@layer components {
+  /* Howl.gg Modern card components */
+  .modern-card {
+    @apply relative overflow-hidden rounded-2xl p-6 shadow-2xl transition-all duration-300;
+    background: linear-gradient(135deg, 
+      rgba(15, 15, 35, 0.95) 0%, 
+      rgba(26, 26, 46, 0.9) 50%, 
+      rgba(22, 33, 62, 0.95) 100%);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    backdrop-filter: blur(20px);
+  }
+  
+  .modern-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.5), transparent);
+  }
+  
+  .modern-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(124, 58, 237, 0.4);
+    box-shadow: 
+      0 20px 40px rgba(124, 58, 237, 0.1),
+      0 0 0 1px rgba(124, 58, 237, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Howl.gg Glowing card variant */
+  .glow-card {
+    @apply modern-card;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    box-shadow: 
+      0 8px 32px rgba(168, 85, 247, 0.15),
+      0 0 0 1px rgba(168, 85, 247, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .glow-card:hover {
+    border-color: rgba(168, 85, 247, 0.5);
+    box-shadow: 
+      0 20px 60px rgba(168, 85, 247, 0.2),
+      0 0 0 1px rgba(168, 85, 247, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Howl.gg Game card with enhanced hover effects */
+  .game-card {
+    @apply modern-card cursor-pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .game-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(124, 58, 237, 0.6);
+    box-shadow: 
+      0 25px 50px rgba(124, 58, 237, 0.2),
+      0 0 0 1px rgba(124, 58, 237, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+  
+  .game-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s;
+  }
+  
+  .game-card:hover::after {
+    left: 100%;
+  }
+  
+  /* Howl.gg Modern button styles */
+  .btn-primary {
+    @apply relative overflow-hidden font-semibold py-3 px-6 rounded-xl transition-all duration-300;
+    @apply text-white shadow-lg hover:shadow-2xl active:scale-95;
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    box-shadow: 
+      0 4px 15px rgba(124, 58, 237, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 8px 25px rgba(124, 58, 237, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+  
+  .btn-secondary {
+    @apply relative overflow-hidden font-semibold py-3 px-6 rounded-xl transition-all duration-300;
+    @apply text-white shadow-lg hover:shadow-xl active:scale-95;
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.8) 0%, rgba(75, 85, 99, 0.9) 100%);
+    border: 1px solid rgba(156, 163, 175, 0.3);
+    backdrop-filter: blur(10px);
+  }
+  
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    border-color: rgba(156, 163, 175, 0.5);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  .btn-accent {
+    @apply relative overflow-hidden font-semibold py-3 px-6 rounded-xl transition-all duration-300;
+    @apply text-gray-900 shadow-lg hover:shadow-2xl active:scale-95;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    box-shadow: 
+      0 4px 15px rgba(251, 191, 36, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  
+  .btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 8px 25px rgba(251, 191, 36, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+  
+  .btn-success {
+    @apply relative overflow-hidden font-semibold py-3 px-6 rounded-xl transition-all duration-300;
+    @apply text-white shadow-lg hover:shadow-2xl active:scale-95;
+    background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+    border: 1px solid rgba(5, 150, 105, 0.3);
+    box-shadow: 
+      0 4px 15px rgba(5, 150, 105, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  .btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 8px 25px rgba(5, 150, 105, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  
+  .btn-danger {
+    @apply relative overflow-hidden font-semibold py-3 px-6 rounded-xl transition-all duration-300;
+    @apply text-white shadow-lg hover:shadow-2xl active:scale-95;
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    box-shadow: 
+      0 4px 15px rgba(220, 38, 38, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  .btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 8px 25px rgba(220, 38, 38, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Howl.gg Wallet button style */
+  .btn-wallet {
+    @apply btn-primary py-2 px-4 text-sm;
+  }
+  
+  /* Gaming-specific button styles */
+  .btn-gaming {
+    @apply relative overflow-hidden font-bold py-4 px-8 rounded-2xl transition-all duration-300;
+    @apply text-white shadow-2xl active:scale-95;
+    background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 50%, #4338ca 100%);
+    border: 2px solid rgba(67, 56, 202, 0.5);
+    font-family: 'Orbitron', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .btn-gaming:hover {
+    transform: translateY(-3px);
+    border-color: rgba(67, 56, 202, 0.8);
+    box-shadow: 
+      0 15px 35px rgba(67, 56, 202, 0.4),
+      0 0 0 1px rgba(67, 56, 202, 0.2),
+      inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Howl.gg Modern input styles */
+  .modern-input {
+    @apply relative text-white rounded-xl px-4 py-3 transition-all duration-300;
+    @apply placeholder-gray-400 focus:outline-none;
+    background: linear-gradient(135deg, rgba(15, 15, 35, 0.8) 0%, rgba(26, 26, 46, 0.9) 100%);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    backdrop-filter: blur(10px);
+  }
+  
+  .modern-input:focus {
+    border-color: rgba(124, 58, 237, 0.5);
+    box-shadow: 
+      0 0 0 3px rgba(124, 58, 237, 0.1),
+      0 4px 12px rgba(124, 58, 237, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .modern-input::placeholder {
+    color: rgba(156, 163, 175, 0.7);
+  }
+  
+  /* Navigation styles */
+  .nav-link {
+    @apply px-4 py-2 rounded-xl font-medium transition-all duration-300;
+    @apply text-gray-300 hover:text-white relative overflow-hidden;
+    background: rgba(15, 15, 35, 0.3);
+    border: 1px solid transparent;
+    backdrop-filter: blur(10px);
+  }
+  
+  .nav-link:hover {
+    background: rgba(124, 58, 237, 0.1);
+    border-color: rgba(124, 58, 237, 0.2);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+  }
+  
+  .nav-link.active {
+    @apply text-white;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(168, 85, 247, 0.1) 100%);
+    border: 1px solid rgba(124, 58, 237, 0.4);
+    box-shadow: 
+      0 4px 15px rgba(124, 58, 237, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav-link-modern {
+    @apply nav-link;
+    position: relative;
+  }
+  
+  .nav-link-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.8), transparent);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  
+  .nav-link-modern:hover::before,
+  .nav-link-modern.active::before {
+    transform: scaleX(1);
+  }
+  
+  /* Gaming UI Components */
+  .gaming-header {
+    @apply relative text-center py-12 mb-8;
+    background: linear-gradient(135deg, rgba(15, 15, 35, 0.9) 0%, rgba(26, 26, 46, 0.8) 100%);
+    border-radius: 24px;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    backdrop-filter: blur(20px);
+  }
+  
+  .gaming-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.8), transparent);
+  }
+  
+  .gaming-wheel {
+    @apply relative rounded-full border-4 border-yellow-400 shadow-2xl;
+    background: conic-gradient(
+      from 0deg,
+      #ef4444 0deg 18deg,
+      #1f2937 18deg 36deg,
+      #ef4444 36deg 54deg,
+      #1f2937 54deg 72deg,
+      #ef4444 72deg 90deg,
+      #1f2937 90deg 108deg,
+      #ef4444 108deg 126deg,
+      #1f2937 126deg 144deg,
+      #ef4444 144deg 162deg,
+      #1f2937 162deg 180deg,
+      #ef4444 180deg 198deg,
+      #1f2937 198deg 216deg,
+      #ef4444 216deg 234deg,
+      #1f2937 234deg 252deg,
+      #ef4444 252deg 270deg,
+      #1f2937 270deg 288deg,
+      #ef4444 288deg 306deg,
+      #1f2937 306deg 324deg,
+      #ef4444 324deg 342deg,
+      #1f2937 342deg 360deg
+    );
+    box-shadow: 
+      0 0 50px rgba(251, 191, 36, 0.3),
+      inset 0 0 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  .gaming-wheel.spinning {
+    animation: spin 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+  
+  .slot-machine {
+    @apply relative rounded-2xl p-8 shadow-2xl;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+    border: 2px solid rgba(251, 191, 36, 0.3);
+    box-shadow: 
+      0 20px 40px rgba(30, 27, 75, 0.5),
+      inset 0 2px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .slot-reel {
+    @apply modern-card text-center min-h-[120px] flex items-center justify-center;
+    @apply text-6xl font-bold border-2 border-yellow-400/50;
+    background: linear-gradient(135deg, rgba(15, 15, 35, 0.9) 0%, rgba(26, 26, 46, 0.8) 100%);
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.3),
+      0 4px 8px rgba(251, 191, 36, 0.2);
+  }
+  
+  .slot-spinning {
+    animation: slot-spin 0.1s linear infinite;
+  }
+  
+  .poker-table {
+    @apply relative rounded-full shadow-2xl;
+    background: 
+      radial-gradient(ellipse at center, #059669 0%, #047857 50%, #065f46 100%);
+    border: 8px solid rgba(251, 191, 36, 0.8);
+    box-shadow: 
+      0 0 50px rgba(5, 150, 105, 0.3),
+      inset 0 0 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .poker-table::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 30%;
+    border: 2px solid rgba(251, 191, 36, 0.5);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Cash display */
+  .cash-display {
+    @apply bg-gradient-to-r from-green-600 to-green-500 text-white font-bold;
+    @apply px-6 py-3 rounded-lg shadow-lg border border-green-400/20;
+  }
+  
+  /* Roulette wheel styles */
+  .roulette-wheel {
+    @apply rounded-full relative overflow-hidden shadow-2xl;
+    background: conic-gradient(
+      from 0deg,
+      #ef4444 0deg 18deg,
+      #1f2937 18deg 36deg,
+      #ef4444 36deg 54deg,
+      #1f2937 54deg 72deg,
+      #ef4444 72deg 90deg,
+      #1f2937 90deg 108deg,
+      #ef4444 108deg 126deg,
+      #1f2937 126deg 144deg,
+      #ef4444 144deg 162deg,
+      #1f2937 162deg 180deg,
+      #ef4444 180deg 198deg,
+      #1f2937 198deg 216deg,
+      #ef4444 216deg 234deg,
+      #1f2937 234deg 252deg,
+      #ef4444 252deg 270deg,
+      #1f2937 270deg 288deg,
+      #ef4444 288deg 306deg,
+      #1f2937 306deg 324deg,
+      #ef4444 324deg 342deg,
+      #1f2937 342deg 360deg
+    );
+  }
+  
+  .roulette-number {
+    @apply absolute w-8 h-8 rounded-full flex items-center justify-center;
+    @apply font-bold text-sm cursor-pointer transition-all duration-200;
+    @apply hover:scale-110 hover:z-10 hover:shadow-lg;
+  }
+  
+  /* Slot machine styles */
+  .slot-reel {
+    @apply modern-card text-center min-h-[120px] flex items-center justify-center;
+    @apply text-5xl font-bold border-2 border-dark-600/50;
+  }
+  
+  .slot-spinning {
+    @apply animate-spin;
+  }
+  
+  /* Betting controls */
+  .bet-button {
+    @apply btn-secondary text-sm py-2 px-4;
+  }
+  
+  .bet-button.active {
+    @apply bg-primary-600 border-primary-500 hover:bg-primary-700;
+  }
+  
+  /* Admin panel styles */
+  .admin-card {
+    @apply modern-card hover:border-accent-500/30;
+  }
+  
+  .admin-stat-card {
+    @apply glow-card text-center p-6;
+  }
+  
+  /* Loading spinner */
+  .loading-spinner {
+    @apply animate-spin rounded-full border-4 border-gray-600;
+    @apply border-t-red-500 w-8 h-8;
+  }
+  
+  /* Xbox Achievement Notification */
+  .xbox-achievement-notification {
+    @apply pointer-events-auto;
+  }
+  
+  /* Animation delays */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+  
+  /* Wallet Modal Styles */
+  .wallet-modal {
+    backdrop-filter: blur(8px);
+  }
+  
+  .wallet-tab {
+    @apply transition-all duration-200;
+  }
+  
+  .wallet-tab.active {
+    @apply bg-red-500/10 text-red-400 border-b-2 border-red-400;
+  }
+  
+  .wallet-tab:not(.active) {
+    @apply text-gray-400 hover:text-white hover:bg-gray-700/50;
+  }
+  
+  /* Scrollbar styles */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-dark-800 rounded-lg;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-dark-600 rounded-lg hover:bg-dark-500;
+  }
+  
+  /* Enhanced Animations */
+  .fade-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  .glow-pulse {
+    animation: glowPulse 2s ease-in-out infinite alternate;
+  }
+  
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .slide-in-left {
+    animation: slideInLeft 0.5s ease-out forwards;
+  }
+  
+  .slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+  }
+  
+  .bounce-in {
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+  
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmer 2s infinite;
+  }
+  
+  /* Particle effects */
+  .particle-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(124, 58, 237, 0.6);
+    border-radius: 50%;
+    animation: particle-float 10s linear infinite;
+  }
+  
+  .particle:nth-child(2n) {
+    background: rgba(168, 85, 247, 0.4);
+    animation-duration: 12s;
+  }
+  
+  .particle:nth-child(3n) {
+    background: rgba(196, 181, 253, 0.3);
+    animation-duration: 8s;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.8);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1440deg);
+  }
+}
+
+@keyframes slot-spin {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Legacy casino styles for compatibility */
+.casino-card {
+  @apply modern-card;
+}
+
+.casino-button {
+  @apply btn-primary;
+}
+
+.casino-input {
+  @apply modern-input;
+}
+
+/* Poker Game Font Classes - Howl.gg Style */
+.poker-font {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  font-variation-settings: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.poker-mono {
+  font-family: 'JetBrains Mono', 'SF Mono', Monaco, Inconsolata, 'Roboto Mono', 'Source Code Pro', monospace;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.poker-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.poker-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.poker-body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+.poker-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.poker-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.poker-button {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.poker-player-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.poker-action {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+
+.poker-log {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.poker-game-state {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.poker-pot {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.poker-bet {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.game-button {
+  @apply btn-primary;
+}
