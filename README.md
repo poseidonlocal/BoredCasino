@@ -1,4 +1,4 @@
-***THIS REPO IS STULL A WORK IN PROGRESS IT IS # NOT FINISHED
+***THIS REPO IS STULL A WORK IN PROGRESS IT IS #NOT FINISHED***
 # 🎰 Bored Casino (Formerly xbox360.cc)
 
 A modern, full-featured online casino application built with Next.js, featuring multiple games, user management, and a comprehensive admin panel.
